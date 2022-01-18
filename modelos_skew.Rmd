@@ -1,0 +1,550 @@
+---
+title: "Modelos Asimétricos (Skew)"
+subtitle: "Asignatura: Seminario"
+header-includes:
+  - \usepackage{titling}
+  - \pretitle{\begin{center}
+    \includegraphics[width=3in,height=3in]{logo2.png}\LARGE\\}
+  - \posttitle{\end{center}}
+author: "Bladimir Morales Torrez"
+date: "Enero 2022"
+output: 
+  pdf_document:
+    number_sections: true
+
+bibliography: bibliografia.bib
+csl: apa.csl
+link-citations: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T)
+library(tidyverse)
+library(gridExtra)
+```
+\newpage
+
+# Introducción
+
+Las variables aleatorias son elementos fundamentales en la estadística y en muchas ocasiones posterior al estudio de su comportamiento se adaptan muy bien a funciones de probabilidad ya conocidas o en su defecto se empieza a construir nuevas funciones de probabilidad con sus correspondientes parámetros.
+
+En el contexto actual existe bastante teoría consolidada sobre el modelo de distribución Normal y su implicancia en la teoría de la probabilidad, inferencia estadística (clásica y bayesiana), y así también en modelos de regresión, series de tiempo y otros. Mencionar también que muchas familias de funciones de probabilidad se aproximan a la Normal a medida que un determinado parámetro tiene a un valor apropiado.
+
+Es así que [@azzalini1985] define la función de densidad Skew-Normal, propiedades y estadísticos principales, generando posteriormente bastantes investigaciones y artículos referente a esta distribución. En el prefacio del libro [@azzalini2013], menciona que la construcción de esta teoría que parte de una función de densidad simétrica y mediante modificaciones adecuadas de la misma conduce a generar un conjunto de distribuciones no simétricas, donde el objetivo es estudiar familias paramétricas flexibles de distribuciones continuas, permitir una posible desviación de la simetría las cuales generen familias de distribuciones más flexibles y realistas.
+
+En el presente documento se mostrará por un lado la formulación del modelo Normal, luego su modificación de parámetros para generar el modelo asimétrica Skew-Normal [@azzalini1985] y por otro lado la formulación del modelo t-Stundent y su correspondiente asimetría con el modelo Skew-t [@azzalini2002_skewt] y [@azzalini2020], para finalizar mencionando algunas aplicaciones de estos modelos en las diferentes áreas de la teoría estadística.
+
+# Marco Teórico
+
+## Modelo Normal
+
+El modelo normal es una de las más importantes y conocidos distribuciones de probabilidad continua en el campo estadístico.
+
+### Definición
+
+Sea $X$ una variable aleatoria con distribución normal con media $\mu$ y varianza $\sigma^2$, que se denota como $X\sim N(\mu,\sigma^2)$, con función de densidad dada por:
+
+\begin{equation}\label{f_normal}
+f(x)=(2\pi\sigma^2)^{-\frac{1}{2}}exp\{-\frac{1}{2\sigma^2}(x-\mu)^2 \}\hspace{1cm}, \forall x\in\mathbb{R} 
+\end{equation}
+
+donde los parámetros: $-\infty<\mu<\infty$ y $\sigma^2>0$.
+
+
+### Función generadora de momentos
+
+Sea $X$ una variable aleatoria con distribución $N(\mu,\sigma^2)$, entonces la función generadora de momentos es:
+
+\begin{equation}\label{momento_normal}
+M_X(t)=\mathbb{E}(e^{tx})=exp(\mu t+\frac{1}{2}\sigma^2 t^2)
+\end{equation}
+
+### Distribución normal estandar
+
+La distribución normal con $\mu=0$ y $\sigma^2=1$ se denomina como la distribución normal estándar. Así la función de densidad es:
+
+\begin{equation}\label{f_normal_est}
+\varphi(z)=(2\pi)^{-\frac{1}{2}}exp\{-\frac{z^2}{2}\}\hspace{1cm}, \forall z\in\mathbb{R}
+\end{equation}
+
+y la función de distribución será:
+
+\begin{equation}\label{facum_normal_est}
+\Phi(z)=\mathbb{P}(Z<z)=\int_{-\infty}^z \varphi(u)du\hspace{1cm}, \forall z\in\mathbb{R}
+\end{equation}
+
+**Observación.** Hacer notar que cuando la tenemos una v.a. $X\sim N(\mu,\sigma^2)$, entonces $Z$ es una variable aleatoria estandarizada $Z=\frac{X-\mu}{\sigma}$ donde $Z\sim N(0,1)$.
+
+## Modelo Skew-Normal
+
+En principio para desarrollar el modelo Skew-Normal se debe tener en cuenta la siguiente proposición.
+
+**Proposición** Sea $f_0$ una función de densidad de probabilidad en $\mathbb{R}^d$, sea $G_0(\cdot)$ una función de distribución continua en la recta real y sea $w(\cdot)$ una función de valor real en $\mathbb{R}^d$, tal que:
+
+$$f_0(-x)=f_0(x),\hspace{1cm}w(-x)=-w(x),\hspace{1cm}G_0(-y)=1-G_0(y)$$ para todo $x\in\mathbb{R}^d, \;y\in\mathbb{R}$. Entonces
+
+\begin{equation}\label{prop1} 
+f(x)=2f_0(x)G_0\{w(x)\}
+\end{equation}
+
+es una función de densidad en $\mathbb{R}^d$.
+
+### Definición
+
+Si por (\ref{prop1}) se selecciona a $f_0=\varphi$ y $G_0=\Phi$ que representan la función de densidad (\ref{f_normal_est}) y la función de distribución (\ref{facum_normal_est}) respectivamente de la $N(0,1)$ y $w(x)=\alpha x$, para algún valor real $\alpha$, produce la función de densidad de la distribución Skew-Normal básica (Figura \ref{densidad_sn}):
+
+\begin{equation}\label{f_sn01}
+\varphi(x;\alpha)=2\varphi(x)\Phi(\alpha x)\hspace{1cm}(-\infty<x<\infty)
+\end{equation}
+
+Ahora se introducirá un parámetro de escala $\omega$ y otro de localización $\xi$. Si $Z$ es una variable aleatoria continua con función de densidad (\ref{f_sn01}), entonces la variable $Y$ queda expresada como:
+
+\begin{equation}\label{sn}
+Y=\xi+\omega Z\hspace{1cm} (\xi\in\mathbb{R},\omega\in \mathbb{R}^+)
+\end{equation}
+
+Así, $Y$ es llamada variable Skew-Normal(SN) con parámetro de localización $\xi$, parámetro de escala $\omega$ y parámetro de inclinación $\alpha$. La función de densidad en $x\in \mathbb{R}$ de la forma (\ref{f_sn01}) es:
+
+\begin{equation}\label{f_sn}
+\frac{1}{\omega}\varphi\left(\frac{x-\xi}{\omega};\alpha\right)
+\equiv\frac{2}{\omega}\varphi \left(\frac{x-\xi}{\omega}\right)\Phi\left(\alpha\frac{x-\xi}{\omega}\right)
+\end{equation}
+
+y se escribe: $$Y\sim SN(\xi,\omega^2,\alpha)$$
+
+donde el cuadrado de $\omega$ por analogía corresponde a la notación de $N(\mu,\sigma^2)$ (Figura \ref{densidad_fin_sn}).
+
+*Observación.* Cuando $\xi=0$ y $\omega=1$ se vuelve a la definición básica de la Skew-Normal (\ref{f_sn01}).
+
+
+### Función generadora de momentos
+
+La función generadora de momentos de $Y$ es obtenida por:
+
+\begin{align}\nonumber
+M_Y(t)&=\mathbb{E}(e^{yt})=\mathbb{E}(exp\{(\xi+wz)t\})\\
+      &=2 exp\{\xi t+\frac{1}{2}\omega^2 t^2\}\int_{-\infty}^{\infty}\varphi(z-\omega t)\Phi(\alpha z)dz \\\nonumber
+      &=2 exp\{\xi t+\frac{1}{2}\omega^2 t^2\} \Phi(\delta \omega t)
+\end{align}
+
+donde $\delta=\delta(\alpha)=\frac{\alpha}{\sqrt{1+\alpha^2}}$
+
+Luego se utiliza la función generadora cumulante:
+
+\begin{equation}\label{f_cumulante}
+K_Y(t)=log\;M_Y(t)=\xi t+\frac{1}{2}\omega^2 t^2+\zeta_0(\delta\omega t)
+\end{equation}
+
+donde 
+\begin{equation}\label{zeta0}
+\zeta_0(x)=log\{2\Phi(x)\}
+\end{equation}
+
+y sus derivada $\zeta_r(x)=\frac{d^r}{dx^r}\zeta_0(x)$ con $r=1,2,...$
+
+así, se tiene:
+
+\begin{align}\nonumber
+\zeta_1(x)&=\frac{d}{dx}\zeta_0(x)=\frac{\varphi(x)}{\Phi(x)}\\\nonumber
+\zeta_2(x)&=\frac{d^2}{dx^2}\zeta_0(x)=\frac{d}{dx}\zeta_1(x)\\\nonumber
+          &=\frac{\varphi'(x)\Phi(x)-\varphi(x)^2}{\Phi(x)^2}
+           =\frac{-x\varphi(x)}{\Phi(x)}-\frac{\varphi(x)^2}{\Phi(x)^2}
+           =-x\zeta_1(x)-\zeta_1(x)^2\\\nonumber
+\zeta_3(x)&=\frac{d^3}{dx^3}\zeta_0(x)=\frac{d}{dx}\zeta_2(x)\\\nonumber
+          &=-\zeta_1(x)-x\zeta_1(x)'-2\zeta_1(x)'\zeta_1(x)\\\nonumber
+          &=-\zeta_1(x)-x[-x\zeta_1(x)-\zeta_1(x)^2]-2[-x\zeta_1(x)-\zeta_1(x)^2]\zeta_1(x)\\\nonumber
+          &=-\zeta_1(x)+x^2\zeta_1(x)+x\zeta_1(x)^2+2x\zeta_1(x)^2+2\zeta_1(x)^3\\\nonumber
+          &=2\zeta_1(x)^3+3x\zeta_1(x)^2+x^2\zeta_1(x)-\zeta_1(x)\\\nonumber
+\zeta_4(x)&=\frac{d^4}{dx^4}\zeta_0(x)=\frac{d}{dx}\zeta_3(x)\\\nonumber
+          &=-6\zeta_1(x)^2\zeta_1(x)'+3[\zeta_1(x)^2+2x\zeta_1(x)\zeta_1(x)']+[2x\zeta_1(x)+x^2\zeta_1(x)']-\zeta_1(x)'\\\nonumber
+          &=-6\zeta_1(x)^2[-x\zeta_1(x)-\zeta_1(x)^2]+3\{\zeta_1(x)^2+2x\zeta_1(x)[-x\zeta_1(x)-\zeta_1(x)^2]\}+\\\nonumber
+          &\hspace{2cm}\{2x\zeta_1(x)+x^2[-x\zeta_1(x)-\zeta_1(x)^2]\}-[-x\zeta_1(x)-\zeta_1(x)^2]\\\nonumber
+          &=-6x\zeta_1(x)^3-6\zeta_1(x)^4+3\zeta_1(x)^2-6x^2\zeta_1(x)^2-6x\zeta_1(x)^3+2x\zeta_1(x)-x^3\zeta_1(x)-x^2\zeta_1(x)^2+x\zeta_1(x)+\zeta_1(x)^2\\\label{momentos_sn}
+          &=-6\zeta_1(x)^4-12x\zeta_1(x)^3-7x^2\zeta_1(x)^2+4\zeta_1(x)^2-x^3\zeta_1(x)+3x\zeta_1(x)
+\end{align}
+
+Para todo $\zeta_r(x)$ con $r>1$ pueden escribirse como funciones de $\zeta_1(x)$ y pontencias de $x$. Notar que $\zeta_1(x)>0$, $x+\zeta_1(x)>0$ y $\zeta_2(x)<0$.
+
+Utilizando (\ref{f_cumulante}), las derivadas de $K_Y(t)$ hasta el cuarto orden son:
+
+\begin{align}
+\mathbb{E}\{Y\}&=\xi+\omega \mu_z\\
+Var\{Y\}&=(\omega\sigma^2_z)^2\\
+\mathbb{E}\{(Y-\mathbb{E}(Y))^3\}&=\frac{1}{2}(4-\pi)(\omega \mu_z)^3\\
+\mathbb{E}\{(Y-\mathbb{E}(Y))^4\}&=2(\pi-3)(\omega \mu_z)^4
+\end{align}
+
+Donde $\mu_z=\mathbb{E}(Z)=b\delta$, $\sigma^2_z=Var(Z)=1-\mu^2_z=1-b^2\delta^2$ y $b=\zeta_1(0)=\sqrt(\frac{2}{\pi})$
+
+### Asimetría
+
+Para la asimetría estandarizando se tiene:
+
+$$\gamma_1\{Y\}=\gamma_1\{Z\}=\frac{\mathbb{E}\{(Y-\mathbb{E}(Y))^3\}}{\omega^3\sigma_z^3}=\frac{4-\pi}{2}\frac{\mu_z^3}{\sigma_z^3}$$
+
+
+### Kurtosis
+
+
+Para la Kurtosis estandarizando se tiene:
+
+$$\gamma_2\{Y\}=\gamma_2\{Z\}=\frac{\mathbb{E}\{(Y-\mathbb{E}(Y))^4\}}{\omega^4\sigma_z^4}=2(\pi-3)\frac{\mu_z^4}{\sigma_z^4}$$
+
+## Modelo t
+
+La familia $t$ de Student es también simétrica a $0$ y se emplea habitualmente cuando se necesita regular el grosor de las colas.
+
+### Definición
+
+Sea $X$ una variable aleatoria con distribución $t$ con $\nu$ grados de libertad, y se denota como $X\sim t_{(\nu)}$, con función de densidad dada por:
+
+\begin{equation}\label{f_t}
+f(x)=\frac{\Gamma(\frac{1}{2}(\nu+1))}{\sqrt{(\pi\nu)}\Gamma(\frac{\nu}{2})}\left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} \hspace{1cm}, \forall x\in\mathbb{R},\; \nu>0
+\end{equation}
+
+### Relación Modelo t
+
+Se puede igualar una distribución $t$ de Student a una razón de una distribuión $V\sim\frac{\chi^2_{\nu}}{\nu}$ y una $Z_0\sim N(0,1)$, siempre y cuando sean ambos independientes. Así se tiene la siguiente igualdad.
+
+\begin{equation}\label{f_t_normal}
+Z=\frac{Z_o}{\sqrt{V}}\sim t_{(\nu)}
+\end{equation}
+
+## Modelo Skew-t
+
+### Definición
+
+Las colas de esta densidad son siempre más pesadas que las de la normal, para $\nu$ finito. Por lo tanto, utilizando el mecanismo de la (Proposición \ref{prop1}), se puede producir distribuciones a lo sumo una cola más ligera que la normal, mientras que la otra cola siempre será más pesada para cualquier $\nu$ finito. Así se tiene
+
+\begin{equation}\label{f_st01}
+2t(x;\nu)T(\alpha x;\nu)
+\end{equation}
+
+donde $T(\alpha x;\nu)$ denota la función de distribución de (\ref{f_t}).
+
+Pero por otro lado también se puede definir de la forma (\ref{f_t_normal}), pero en este caso $Z_0\sim SN(0,1,\alpha)$ y $h(\cdot)$ denotará la función de densidad de $V$, asi se tiene:
+
+\begin{align}\label{int_st}
+t(x;\alpha,\nu)&=\int_0^\infty 2\varphi(x\sqrt{t})\Phi(\alpha x\sqrt{t})\sqrt{t}h(t) dt\\\nonumber
+&=\frac{2}{\Gamma(\frac{\nu}{2})\sqrt{\pi\nu}}\left(1+\frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}\int_0^\infty e^{-u}u^{\frac{(\nu-1)}{2}}\Phi\left(\frac{\alpha x\sqrt{2u}}{\sqrt{x^2+\nu}}\right)du\\\nonumber
+&=2t(x;\nu)T\left(\alpha x\sqrt{\frac{\nu+1}{\nu+x^2}};\nu+1\right)
+\end{align}
+
+
+*Observación 1.* Si $\alpha=0$ se reduce a la densidad $t$ de Student habitual.
+
+*Observación 2.* Si $\nu\rightarrow \infty$ converge a la $SN(0,1,\alpha)$.
+
+Ahora se introduce un parametro de lozalización y escala, considerando:
+
+$$Y=\xi+\omega Z$$
+la función de densidad estará dada por:
+
+\begin{equation}\label{f_st}
+\frac{1}{\omega}t\left(\frac{x-\xi}{\omega};\alpha,\nu\right)
+\end{equation}
+
+Así se tiene:
+
+$$Y\sim ST(\xi,\omega^2,\alpha,\nu)$$
+
+### Momentos
+
+Si se toma la forma de (\ref{f_t_normal}), el $m-ésimo$ momento de $Z$ se expresa como:
+
+$$\mathbb{E}({Z^m})=\mathbb{E}({V^{-\frac{m}{2}}})\mathbb{E}(Z_0^m)$$
+
+Los componentes se proporcionana del resultado estándar:
+
+$$\mathbb{E}({V^{-\frac{m}{2}}})=\frac{(\frac{v}{2}^{\frac{m}{2}})\Gamma(\frac{v-m}{2})}{\Gamma(\frac{v}{2})}\hspace{1cm},\text{si }m<v$$
+Ahora si se toma las expresiones de $\mathbb{E}(Z_0^m)$ denotadas en la sección $2.2.2$, donde ahora se toma:
+
+$$b_\nu=\frac{\sqrt{v}\Gamma(\frac{\nu-1}{2})}{\sqrt{\pi}\Gamma(\frac{\nu}{2})}\hspace{1cm},\nu>1$$
+Luego se tiene:
+
+$$\mathbb{E}(Y)=\xi+\omega b_\nu \delta\hspace{1cm}, \nu>1$$
+
+$$Var(Y)=\omega^2\left[ \frac{\nu}{\nu-2}-(b_\nu\delta)^2\right]=\omega^2 \sigma^2_z \hspace{1cm}, \nu>2$$
+
+$$\gamma_1=\frac{b_\nu \delta}{\sigma^{3/2}_z}\left[\frac{\nu(3-\delta^2)}{\nu-3}-\frac{3\nu}{\nu-2}+2(b_\nu\delta)^2\right]\hspace{1cm},\nu>3$$
+
+$$\gamma_2=\frac{1}{\sigma^{4}_z}\left[\frac{3\nu^2}{(\nu-2)(\nu-4)}-\frac{4(b_\nu \delta)^2\nu(3-\delta^2)}{\nu-3}+\frac{6(b_\nu\delta)^2 \nu}{\nu-2}-3(b_\nu\delta)^4\right]-3\hspace{1cm},\nu>4$$
+
+donde $\delta=\delta(\alpha)=\frac{\alpha}{\sqrt{1+\alpha^2}}$, $\gamma_1$ corresponde a la asimetría y 
+$\gamma_2$ la Kurtosis.
+
+
+## La función log-verosimilitud
+
+Si $y$ es un valor muestreado de una variable aleatoria $Y\sim SN(\xi,\omega^2,\alpha)$ su función log-verosimilitud es:
+
+\begin{equation}\label{verosimilitud}
+\ell(\theta^{DP};y)=constante-log \omega - \frac{(y-\xi)^2}{2\omega^2}+\zeta_0\left(\alpha\frac{y-\xi}{\omega}\right)
+\end{equation}
+
+donde $\theta^{DP}=(\xi,\omega,\alpha)^t$ y $\zeta_0(\cdot)$ esta definida como (\ref{zeta0}). El superindice $DP$ significa *parametros directos (direct parameters)*.
+
+Si $z=\left(\frac{y-\xi}{\omega}\right)$ y $\zeta_1(\cdot)$ es definida como (\ref{momentos_sn}) el componente del vector SCORE son:
+
+\begin{align}\label{score}\nonumber
+\frac{\partial \ell_1}{\partial \xi}&=\frac{z}{\omega}-\frac{\alpha}{\omega}\zeta_1(\alpha z)\\\nonumber
+\frac{\partial \ell_1}{\partial \omega}&=
+-\frac{1}{\omega}+\frac{z^2}{\omega}-\frac{\alpha}{\omega}\zeta_1(\alpha z)z\\
+\frac{\partial \ell_1}{\partial \alpha}&=\zeta_1(\alpha z)z
+\end{align}
+
+Si se dispone de una muestra aleatoria $y_1,..., y_n$ de $Y \sim SN(\xi,\omega^2, \alpha)$, la
+probabilidad logarítmica $\ell(\theta)^{DP}$ se obtiene mediante la suma de $n$ términos del tipo (\ref{verosimilitud}) y la correspondiente suma de términos (\ref{score}) conduce a las ecuaciones de verosimilitud.
+
+\begin{align}\label{sol_verosimilitud}\nonumber
+\sum_i z_i-\alpha\sum_i\zeta_1(\alpha z_i)&=0\\\nonumber
+\sum_i z_i^2-\alpha\sum_i z_i\zeta_1(\alpha z_i)&=n\\\nonumber
+\sum_i z_i\zeta_1(\alpha z_i)=0\\
+\end{align}
+
+La presencia de la función no lineal $\zeta_1$ impide la solución de estas ecuaciones, por lo que se emplea métodos numéricos. De la tercera ecuación, la segunda requiere que $\xi$ y $omega$ satisfagan
+
+$$\hat\omega^2=\frac{1}{n}\sum_i (y_i-\hat\xi)^2$$
+
+
+# Desarrollo
+
+## Avance teórico en las distribuciones Skew
+
+Las distribuciones mostradas en la sección anterior son bastante utilizadas en diferentes áreas de la estadística, es así que luego de realizar una búsqueda se pudo evidenciar que se esta profundizando la teoría en las siguientes áreas y así también se nombra los nombres de los artículos:
+
+- Distribuciones univariadas-multivariables Skew-Normal.
+  - A New Class of Skew Normal Distribution : Tanh-Skew Normal Distribution and its Properties
+  - On the bivariate skew-normal and log-skew-normal distributions
+  - An Extension of the Truncated-Exponential Skew- Normal Distribution
+  - A new class of bimodal skewed distributions
+  - The Exponential-Centred Skew-Normal Distribution
+  - Generalized alpha skew normal distribution
+  - Alpha-skew-normal distribution
+  - A Generalized-Alpha–Beta-Skew Normal Distribution with Applications
+  - The Balakrishnan skew–normal density
+  - The Kumaraswamy skew-normal distribution
+  
+- Distribuciones Skew-Elipticas (colas pesadas).
+  - A New Robust Class of Skew Elliptical Distributions
+  - Bivariate Power-Skew-Elliptical Distribution
+  - Multivariate unified skew-elliptical distributions
+  - The F statistic of the skew elliptical variables
+  - The Skewed-Elliptical Log-Linear Birnbaum–Saunders Alpha-Power Model
+
+- Inferencia estadística
+  - Mixtures of skew normal distributions and an efficient EM algorithm to robustly estimate them 
+  - A Generalization of the Skew-Normal Distribution: The Beta Skew-Normal
+  - A new class of bimodal skewed distributions
+  - Statistical inference on skew-normal distribution based on order statistics
+  - Bayesian Estimation of skewness parametric of skew normal
+  
+  
+- Modelos de regresión lineal y  no lineal.
+  - Regularized Extended Skew-Normal Regression
+  - A new Balakrishnan type Skew-Normal distribution
+  - Nonlinear mixed-effects model with skew-scale of skew normal distributions
+  - Scale Mixture of Skew-Normal Linear Mixed Models
+  - A Skew-Normal Mixture Regression Model
+  - Bayesian Analysis of Skew Normal Mixture Regression
+  - A skew-normal dynamic linear model and Bayesian forecasting
+  
+- Series temporales
+  - AR(1) model with skew-normal innovations
+  - Skew Normal and Skew Student-t distributiones on GARCH(1,1) model
+  - A Skew-Normal Spatial Simultaneous Autoregressive Model and its Implementation
+
+- Modelo lineal generalizado .
+  - GLM bernoulli distribution
+  - A Skew‐normal copula‐driven GLMM
+
+- Geoestadística
+ - Non‐Gaussian geostatistical modeling using (skew) t processes
+ - On Spatial (Skew) t Processes and Applications
+
+## Aplicación 
+
+Para poder mostrar de manera práctica lo visto en secciones anteriores se realizará algunas simulaciones con el software R de las distribuciones [@ppt] y así también un modelo de regresión lineal para errores skew-normal, con la librería `sn` que muestra bastantes aplicaciones [@paquetesn].
+
+### Programación distribución Skew-Normal 
+
+```{r eval=FALSE,include=FALSE}
+grid.arrange(
+  ggplot(data,aes(x,varphi_x))+
+  geom_point(color="green")+geom_line(color="black")+
+  ylab("Fun. distribución Normal(0,1)")
+  ,
+  ggplot(data,aes(x,Phi_x))+
+  geom_point(color="green")+geom_line(color="black")+
+  ylab("Fun. acumulada Normal(0,1)"),
+  ncol=2
+)
+```
+
+
+```{r echo=F,densidad_sn,fig.height=3,fig.pos="H",fig.cap="\\label{densidad_sn}Distribución básica Skew-Normal"}
+set.seed(12345)
+x<-rnorm(1000,0,1)
+data<-tibble(x,varphi_x=dnorm(x,0,1),Phi_x=pnorm(x,0,1))
+data_skew_m<-data %>% 
+  mutate(varphi_x0=2*varphi_x*(pnorm(0*x,0,1)),
+         varphi_x1=2*varphi_x*(pnorm(-1*x,0,1)),
+         varphi_x3=2*varphi_x*(pnorm(-3*x,0,1)),
+         varphi_x10=2*varphi_x*(pnorm(-10*x,0,1))) %>% 
+  pivot_longer(cols=c(varphi_x0,varphi_x1,varphi_x3,varphi_x10),names_to = "varphi_xa")
+
+data_skew_p<-data %>% 
+  mutate(varphi_x0=2*varphi_x*(pnorm(0*x,0,1)),
+         varphi_x1=2*varphi_x*(pnorm(1*x,0,1)),
+         varphi_x3=2*varphi_x*(pnorm(3*x,0,1)),
+         varphi_x10=2*varphi_x*(pnorm(10*x,0,1))) %>% 
+  pivot_longer(cols=c(varphi_x0,varphi_x1,varphi_x3,varphi_x10),names_to = "varphi_xa")
+
+grid.arrange(
+  ggplot(data_skew_m,aes(x,value,color=varphi_xa))+
+    geom_line(size=1)+
+    scale_color_manual(name="Alpha",labels=c("0","-1","-3","-10"),
+                       values = c("#F74343","#1CD124","#4887EE","#D048EE"))+
+    ylab("Fun. densidad Skew-Normal")+
+    theme(legend.position = c(0.88,0.8)),
+  ggplot(data_skew_p,aes(x,value,color=varphi_xa))+
+    geom_line(size=1)+
+    scale_color_manual(name="Alpha",labels=c("0","1","3","10"),
+                       values = c("#F74343","#1CD124","#4887EE","#D048EE"))+
+    ylab("Fun. densidad Skew-Normal")+
+    theme(legend.position = c(0.1,0.8)),
+  ncol=2)
+```
+
+
+```{r echo=F, densidad_fin_sn,fig.height=3,fig.pos="H",fig.cap="\\label{densidad_fin_sn}Distribución Skew-Normal con parámetro de localización y escala"}
+f_sn<-function(fx,fxi,fomega,falpha){
+  varphi_y<-dnorm((fx-fxi)/fomega,0,1)
+  Phi_y<-pnorm(falpha*((fx-fxi)/fomega),0,1)
+  y<-(2/fomega)*varphi_y*Phi_y
+  return(y)
+}
+
+data_sn1<-tibble(x,
+             y1=f_sn(x,-1,1,-3),
+             y2=f_sn(x,0,1.5,-3),
+             y3=f_sn(x,1,2,-3),
+             y4=f_sn(x,2,2.5,-3)) %>% 
+  pivot_longer(cols = c(y1,y2,y3,y4))
+
+data_sn2<-tibble(x,
+             y1=f_sn(x,-1,2.5,3),
+             y2=f_sn(x,0,2,3),
+             y3=f_sn(x,1,1.5,3),
+             y4=f_sn(x,2,1,3)) %>% 
+  pivot_longer(cols = c(y1,y2,y3,y4))
+
+grid.arrange(
+  ggplot(data_sn1,aes(x,value,color=name))+
+    geom_line(size=1)+
+    scale_color_manual(name="",labels=c("(-1, 1, -3)","(0 , 1.5, -3)","(1, 2, -3)","(2, 2.5, -3)"),
+                       values = c("#F74343","#1CD124","#4887EE","#D048EE"))+
+    ylab("Fun. densidad Skew-Normal")+
+    ggtitle("Skew Nornal (E,w,a)")+
+    theme(legend.position = c(0.8,0.8)),
+  ggplot(data_sn2,aes(x,value,color=name))+
+    geom_line(size=1)+
+    scale_color_manual(name="",labels=c("(-1, 2.5, 3)","( 0, 2, 3)","( 1, 1.5, 3)","( 2, 1, 3)"),
+                       values = c("#F74343","#1CD124","#4887EE","#D048EE"))+
+    ylab("Fun. densidad Skew-Normal")+
+    ggtitle("Skew Nornal (E,w,a)")+
+    theme(legend.position = c(0.2,0.8)),
+  ncol=2)
+
+```
+
+### Libreria sn
+
+Skew-Normal
+
+```{r echo=F,warning=FALSE,message=F}
+library(sn)
+x <- seq(-2, 4, length=300)
+y1<-dsn(x, xi=0, omega=1.2, alpha=10)
+y2 <- dsn(x, 0, 1.2, 4)
+y3 <- dsn(x, dp=c(0, 1.2, 2))
+z1<-dst(x, xi=0, omega=1.2, alpha=2,nu=5)
+z2 <- dst(x, 0, 1.2, 1, 5)
+z3 <- dst(x, dp=c(0, 1.2,0.5, 5))
+
+par(mfrow=c(1,2))
+plot(x, y1, type="l", ylab="densidad",main="Skew-Normal")
+lines(x, y2, col=2)
+lines(x, y3, col=4, lty=2)
+
+plot(x, z1, type="l", ylab="densidad",main="Skew-t")
+lines(x, z2, col=2)
+lines(x, z3, col=4, lty=2)
+
+```
+
+### Regresión lineal
+
+**Datos.**
+```{r }
+data(ais)
+hist(log(ais$Fe), main="Histograma")
+```
+
+**Modelo lineal Skew-Normal**
+
+```{r }
+mod_sn <- selm(log(Fe) ~ BMI + LBM, family="SN", data=ais)
+summary(mod_sn,param.type="DP")
+```
+
+**Modelo lineal Skew-Normal**
+
+```{r }
+mod_st <- selm(log(Fe) ~ BMI + LBM, family="ST", fixed.param=list(nu=8), data=ais)
+summary(mod_st,param.type="DP")
+```
+
+**Modelo Lineal general**
+
+```{r }
+mod <- lm(log(Fe) ~ BMI + LBM, data=ais)
+summary(mod)
+```
+
+**Gráficos**
+```{r}
+par(mfrow=c(2,2))
+hist(residuals(mod))
+plot(mod_sn,col=2,param.type="DP",which=2,main="Residuos ML-SN")
+plot(mod_sn,col=2,param.type="DP",which=2,main="Residuos ML-SN")
+plot(mod_st,col=2,param.type="DP",which=2,main="Residuos ML-ST")
+```
+
+
+```{r}
+par(mfrow=c(2,2))
+plot(mod,col=3,which=2)
+plot.selm(mod_sn,col=2,which=3,param.type="DP")
+plot.selm(mod_sn,col=2,which=3,param.type="DP")
+plot.selm(mod_st,col=2,which=3,param.type="DP")
+```
+
+# Conclusiones
+
+Se hizo una revisión bibliográfica bastante extensa de la distribuciones asimétricas (Skew), encontrando así diferentes investigaciones de diferentes autores, donde el principal precursor y creador es Azzalini, el cual desde 1985 presentó esta nueva familia de distribuciones asimétricas. Inicio con la distribución normal estandár, encontrando sus momentos, luego realizando inferencia encontró sus estimadores y tuvo aproximaciones bayesianas. De la misma forma trabajo con la distribución $t$ de Student tomando en cuenta para ambos casos parámetros de centralidad. Pasó luego a la parte multivariable de las distribuciones e investigó sobre las distribuciones elipticas (colas pesadas).
+
+En este trabajo se contextualizó las distribuciones Skew-Normal y Skew-t, mostrando su formulación con parámetros establecidos y que son una generalización de las distribuciones Normal y $t$ de Student respectivamente. Se mostró los momentos de cada una de las distribuciones para finalmente realizar la función log de verosimilitud de la Skew-Normal.
+
+Se pudo también conocer respecto a las áreas de investigación que generó este tipo de distribuciones siendo bastante extensa la literatura, nombrando algunas de las investigaciones ya generadas referente al tema de estudio. 
+
+Al finalizar se programo la simulación de la distribución skew-normal con el software R y se indago respecto a la libreria `sn` la cual cuenta con bastantes funciones relacionadas a las distribuciones asimétricas simulando como ejemplos las distribuciones skew-normal y skew-t. También se pudo comparar tres modelos de regresión lineal, el primero modelo lineal general, luego un modelo lineal skew-normal y finalmente un modelo lineal skew-t, de los cuales se pudo verificar de manera visual con el QQ-plot que el que tiene mejor ajuste a los datos según los residuos es el modelo Skew-t.
+
+
+\newpage
+
+# Bibliografia
+
+
