@@ -23,6 +23,8 @@ editor_options:
 knitr::opts_chunk$set(echo = T)
 library(tidyverse)
 library(gridExtra)
+library(CircStats)
+library(sn)
 ```
 \newpage
 
@@ -546,5 +548,7 @@ Al finalizar se programo la simulación de la distribución skew-normal con el s
 \newpage
 
 # Bibliografia
+
+
 
 

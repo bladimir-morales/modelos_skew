@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.13)  21 JAN 2022 15:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.13)  21 JAN 2022 15:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**modelos_skew.tex
-(./modelos_skew.tex
+**modelos_regresion_skew.tex
+(./modelos_regresion_skew.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-12> (c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-
 dist/tex/latex/base/article.cls
@@ -436,8 +436,8 @@ LaTeX Info: Redefining \addtolength on input line 81.
 File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count293
 \l__pdf_internal_box=\box54
-) (./modelos_skew.aux)
-\openout1 = `modelos_skew.aux'.
+) (./modelos_regresion_skew.aux)
+\openout1 = `modelos_regresion_skew.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
 LaTeX Font Info:    ... okay on input line 140.
@@ -508,9 +508,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 140.
 LaTeX Info: Redefining \pageref on input line 140.
 LaTeX Info: Redefining \nameref on input line 140.
-(./modelos_skew.out) (./modelos_skew.out)
+(./modelos_regresion_skew.out) (./modelos_regresion_skew.out)
 \@outlinefile=\write4
-\openout4 = `modelos_skew.out'.
+\openout4 = `modelos_regresion_skew.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -546,7 +546,7 @@ LaTeX Info: Redefining \nameref on input line 140.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<logo2.png, id=108, 227.85126pt x 341.275pt>
+<logo2.png, id=64, 227.85126pt x 341.275pt>
 File: logo2.png Graphic file (type png)
 <use logo2.png>
 Package pdftex.def Info: logo2.png  used on input line 141.
@@ -594,113 +594,170 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cf
 g
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [1
+) (./modelos_regresion_skew.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 3.
+[1
 
 {c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex
-.map} <./logo2.png>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 195.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 195.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 195.
+.map} <./logo2.png>])
+\tf@toc=\write5
+\openout5 = `modelos_regresion_skew.toc'.
+
 [2] [3]
-Overfull \hbox (22.12021pt too wide) detected at line 344
+Underfull \hbox (badness 10000) in paragraph at lines 306--308
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 308--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--313
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--315
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--317
+
+ []
+
+
+Overfull \hbox (22.12021pt too wide) detected at line 367
 []
  []
 
-[4] [5]
-
-LaTeX Warning: Command \' invalid in math mode on input line 457.
-
-[6] [7]
+[5] [6] [7]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-41.
+02.
 (c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [8]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-62.
+) [8] [9] [10] [11]
+
+LaTeX Warning: Command \' invalid in math mode on input line 743.
+
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+81.
 (c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-<modelos_skew_files/figure-latex/densidad_sn-1.pdf, id=238, 469.755pt x 216.81p
-t>
-File: modelos_skew_files/figure-latex/densidad_sn-1.pdf Graphic file (type pdf)
-
-<use modelos_skew_files/figure-latex/densidad_sn-1.pdf>
-Package pdftex.def Info: modelos_skew_files/figure-latex/densidad_sn-1.pdf  use
-d on input line 671.
+) [12]
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-1-1.pdf, id=235, 469.7
+55pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-1-1.pdf Graphic f
+ile (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-1-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-1-1.pdf  used on input line 812.
 (pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
-<modelos_skew_files/figure-latex/densidad_fin_sn-1.pdf, id=239, 469.755pt x 216
-.81pt>
-File: modelos_skew_files/figure-latex/densidad_fin_sn-1.pdf Graphic file (type 
-pdf)
-<use modelos_skew_files/figure-latex/densidad_fin_sn-1.pdf>
-Package pdftex.def Info: modelos_skew_files/figure-latex/densidad_fin_sn-1.pdf 
- used on input line 677.
-(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
-<modelos_skew_files/figure-latex/unnamed-chunk-2-1.pdf, id=240, 469.755pt x 325
-.215pt>
-File: modelos_skew_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type 
-pdf)
-<use modelos_skew_files/figure-latex/unnamed-chunk-2-1.pdf>
-Package pdftex.def Info: modelos_skew_files/figure-latex/unnamed-chunk-2-1.pdf 
- used on input line 687.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[9 <./modelos_skew_files/figure-latex/densidad_sn-1.pdf>] [10 <./modelos_skew_f
-iles/figure-latex/densidad_fin_sn-1.pdf> <./modelos_skew_files/figure-latex/unn
-amed-chunk-2-1.pdf>]
-<modelos_skew_files/figure-latex/unnamed-chunk-3-1.pdf, id=272, 469.755pt x 325
-.215pt>
-File: modelos_skew_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type 
-pdf)
-<use modelos_skew_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: modelos_skew_files/figure-latex/unnamed-chunk-3-1.pdf 
- used on input line 701.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[11 <./modelos_skew_files/figure-latex/unnamed-chunk-3-1.pdf>]
+[13 <./modelos_regresion_skew_files/figure-latex/unnamed-chunk-1-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-800.
+843.
 (c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [12]
-<modelos_skew_files/figure-latex/unnamed-chunk-7-1.pdf, id=288, 469.755pt x 325
-.215pt>
-File: modelos_skew_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type 
-pdf)
-<use modelos_skew_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: modelos_skew_files/figure-latex/unnamed-chunk-7-1.pdf 
- used on input line 814.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<modelos_skew_files/figure-latex/unnamed-chunk-8-1.pdf, id=289, 469.755pt x 325
-.215pt>
-File: modelos_skew_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type 
-pdf)
-<use modelos_skew_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: modelos_skew_files/figure-latex/unnamed-chunk-8-1.pdf 
- used on input line 826.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[13 <./modelos_skew_files/figure-latex/unnamed-chunk-7-1.pdf>] [14 <./modelos_s
-kew_files/figure-latex/unnamed-chunk-8-1.pdf>] [15] (./modelos_skew.aux)
-Package rerunfilecheck Info: File `modelos_skew.out' has not changed.
-(rerunfilecheck)             Checksum: 01117513D6A8B216DA4FC6EA16E4C081;3819.
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 887.
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-3-1.pdf, id=254, 469.7
+55pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-3-1.pdf Graphic f
+ile (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-3-1.pdf  used on input line 893.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+[14]
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-4-1.pdf, id=261, 469.7
+55pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-4-1.pdf Graphic f
+ile (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-4-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-4-1.pdf  used on input line 905.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+[15 <./modelos_regresion_skew_files/figure-latex/unnamed-chunk-3-1.pdf> <./mode
+los_regresion_skew_files/figure-latex/unnamed-chunk-4-1.pdf>] [16]
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-8-1.pdf, id=285, 469.7
+55pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-8-1.pdf Graphic f
+ile (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-8-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-8-1.pdf  used on input line 1037.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+[17]
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-9-1.pdf, id=290, 469.7
+55pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-9-1.pdf Graphic f
+ile (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-9-1.pdf  used on input line 1049.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-10-1.pdf, id=291, 469.
+755pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-10-1.pdf Graphic 
+file (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-10-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-10-1.pdf  used on input line 1061.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+[18 <./modelos_regresion_skew_files/figure-latex/unnamed-chunk-8-1.pdf> <./mode
+los_regresion_skew_files/figure-latex/unnamed-chunk-9-1.pdf>]
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-11-1.pdf, id=306, 469.
+755pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-11-1.pdf Graphic 
+file (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-11-1.pdf  used on input line 1081.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+[19 <./modelos_regresion_skew_files/figure-latex/unnamed-chunk-10-1.pdf> <./mod
+elos_regresion_skew_files/figure-latex/unnamed-chunk-11-1.pdf>]
+<modelos_regresion_skew_files/figure-latex/unnamed-chunk-12-1.pdf, id=322, 469.
+755pt x 216.81pt>
+File: modelos_regresion_skew_files/figure-latex/unnamed-chunk-12-1.pdf Graphic 
+file (type pdf)
+<use modelos_regresion_skew_files/figure-latex/unnamed-chunk-12-1.pdf>
+Package pdftex.def Info: modelos_regresion_skew_files/figure-latex/unnamed-chun
+k-12-1.pdf  used on input line 1106.
+(pdftex.def)             Requested size: 469.75386pt x 216.80946pt.
+<resultados.png, id=323, 520.94624pt x 76.03406pt>
+File: resultados.png Graphic file (type png)
+<use resultados.png>
+Package pdftex.def Info: resultados.png  used on input line 1115.
+(pdftex.def)             Requested size: 338.77003pt x 49.44475pt.
+[20 <./modelos_regresion_skew_files/figure-latex/unnamed-chunk-12-1.pdf> <./res
+ultados.png>] [21] [22] (./modelos_regresion_skew.aux)
+Package rerunfilecheck Info: File `modelos_regresion_skew.out' has not changed.
+
+(rerunfilecheck)             Checksum: 8AAB163FB55E89D0A7C6D241AD7436F3;2304.
  ) 
 Here is how much of TeX's memory you used:
- 13609 strings out of 480246
- 219883 string characters out of 5894533
- 545753 words of memory out of 5000000
- 31096 multiletter control sequences out of 15000+600000
- 531097 words of font info for 134 fonts, out of 8000000 for 9000
+ 13637 strings out of 480246
+ 221672 string characters out of 5894533
+ 547733 words of memory out of 5000000
+ 31101 multiletter control sequences out of 15000+600000
+ 525704 words of font info for 136 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,10n,63p,1009b,527s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
-nc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
+ 60i,11n,63p,1019b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.en
+c}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
 nc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-math
-sy.enc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-
-mathit.enc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm
-/lm-mathex.enc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvip
-s/lm/lm-rm.enc}<c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/pu
+it.enc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-
+mathex.enc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm
+/lm-rm.enc}{c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm
+/lm-mathsy.enc}<c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/pu
 blic/lm/lmbx10.pfb><c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/type
 1/public/lm/lmbx12.pfb><c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/
 type1/public/lm/lmex10.pfb><c:/Users/ACER/AppData/Roaming/TinyTeX/texmf-dist/fo
@@ -714,15 +771,15 @@ nyTeX/texmf-dist/fonts/type1/public/lm/lmr5.pfb><c:/Users/ACER/AppData/Roaming/
 TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/ACER/AppData/Roamin
 g/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/Users/ACER/AppData/Ro
 aming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/ACER/AppDat
-a/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy5.pfb><c:/Users/ACER/App
-Data/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/ACER/
-AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/A
-CER/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb>
-Output written on modelos_skew.pdf (15 pages, 515773 bytes).
+a/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/ACER/App
+Data/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/ACER
+/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/
+ACER/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb>
+Output written on modelos_regresion_skew.pdf (22 pages, 488420 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 356 compressed objects within 4 object streams
- 101 named destinations out of 1000 (max. 500000)
- 35060 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 456 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 113 named destinations out of 1000 (max. 500000)
+ 30891 words of extra memory for PDF output out of 35830 (max. 10000000)
 
